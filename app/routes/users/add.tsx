@@ -2,6 +2,8 @@ import { redirect } from "@remix-run/server-runtime";
 import type { LoaderFunction } from "@remix-run/server-runtime";
 import AddUser, { links as addUserLinks } from "~/components/Users/AddUser/AddUser";
 import { authenticator } from "~/services/auth.server";
+import { readFile } from "~/utils/fileActions";
+import { promises as fs } from "fs";
 
 const Add = () => {
     return (
@@ -22,6 +24,20 @@ export let loader: LoaderFunction = async ({ request }) => {
 
 export const action = async ({ request }: { request: any }) => {
     const form = Object.fromEntries(await request.formData());
+    form.id = "user-"+Math.random();
+    const jsonDirectory = __dirname + "/../app/data";
+    let userList = await readFile(jsonDirectory + "/userList.json");
+    if(userList && userList !== ""){
+        userList = JSON.parse(userList);
+    }else{
+        userList = {users: []};
+    }
+    userList.users.push(form);
+    fs.writeFile(jsonDirectory + "/userList.json", JSON.stringify(userList))
+    .catch((err) => {
+        console.log(err);
+        
+    })
     return redirect('/users');
 }
 

@@ -1,6 +1,6 @@
 import { useLoaderData, Link } from "@remix-run/react";
 import { DashboardModel } from "~/models/Dashboard"
-import styles from "./dashboard.css";
+import styles from "./Dashboard.css";
 const Dashboard = () => {
     let data = useLoaderData<DashboardModel>();
 

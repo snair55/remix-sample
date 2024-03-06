@@ -1,20 +1,25 @@
-import { Form } from "@remix-run/react";
-import styles from "./login.css";
+import { Form , useActionData} from "@remix-run/react";
+import styles from "./Login.css";
+import logo from "../../../public/user-logo.svg";
 
 const Login = () => {
+  const actionData = useActionData();
+  console.log("actionData", actionData);
+  
     return (
-        <div className="login-form">
-            <Form method="post">
-                <input type="email" name="email" required />
-                <input
-                    type="password"
-                    name="password"
-                    autoComplete="current-password"
-                    required
-                />
-                <button>Sign In</button>
-            </Form>
+        <div className="login-page">
+        <div className="form">
+            <img src={logo} className="width-30"/>
+          <Form method="post" className="login-form">
+            <input type="email" placeholder="Email" name="email"/>
+            <input type="password" placeholder="Password" name="password"/>
+            <button>login</button>
+          </Form>
+          {actionData?.errors?.login? (
+          <em>{actionData?.errors.login}</em>
+        ) : null}
         </div>
+      </div>
     );
 }
 export default Login;

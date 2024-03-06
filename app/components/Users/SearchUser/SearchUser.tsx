@@ -2,8 +2,8 @@ import styles from "./SearchUser.css";
 const SearchUser = () => {
     return (
         <div className="search-box">
-            <input type="text" name="search" className="m-r-10" placeholder="Search User"/>
-            <button type="button">Search</button>
+                <input type="text" name="search" className="m-r-10" placeholder="Search User" />
+                <button type="submit">Submit</button>
         </div>
     );
 }
