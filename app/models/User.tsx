@@ -6,3 +6,10 @@ export type UserListModel = {
         mobile: string 
     }>;
 };
+
+export type UserListSearchModel = {
+    loaderData: UserListModel;
+    actionData: {
+        search: string;
+    }
+}

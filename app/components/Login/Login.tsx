@@ -4,8 +4,6 @@ import logo from "../../../public/user-logo.svg";
 
 const Login = () => {
   const actionData = useActionData();
-  console.log("actionData", actionData);
-  
     return (
         <div className="login-page">
         <div className="form">

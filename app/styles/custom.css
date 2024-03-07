@@ -1,7 +1,25 @@
-.width-30{
+.width-30 {
     width: 30%;
 }
 
-.p-10{
+.p-10 {
     padding: 10px;
+}
+
+.btn-blue {
+    color: white;
+    background: #7474ea;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    height: 30px;
+}
+
+.btn-reset {
+    color: white;
+    background: #393948;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    height: 30px;
 }

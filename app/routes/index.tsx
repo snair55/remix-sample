@@ -4,14 +4,15 @@ import { authenticator } from "~/services/auth.server";
 import { DashboardModel } from "~/models/Dashboard";
 import Dashboard, { links as dashboardLinks } from "~/components/Dashboard/Dashboard";
 
-export default function DashboardPage() {
-
+const DashboardPage = () => {
   return (
     <>
       <Dashboard />
     </>
   );
 }
+
+export default DashboardPage;
 
 export let loader: LoaderFunction = async ({ request }) => {
   const user = await authenticator.isAuthenticated(request);

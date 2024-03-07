@@ -1,9 +1,20 @@
-import { useLoaderData, Link } from "@remix-run/react";
+import { Link } from "@remix-run/react";
+import { useEffect, useState } from "react";
 import { UserListModel } from "~/models/User";
 import styles from "./ListUser.css";
 
-const ListUser = () => {
-    let data = useLoaderData<UserListModel>();
+const ListUser = (props: any) => {
+    const [userData, setUserData] = useState([]);
+    useEffect(() => {
+        let data = props?.loaderData?.users ? props.loaderData.users : [];
+        if (props.actionData && props.actionData.search && props.actionData.search !== "") {
+            data = data.filter((item: any) =>
+                item.firstname.includes(props.actionData.search) ||
+                item.lastname.includes(props.actionData.search) ||
+                item.mobile.includes(props.actionData.search))
+        }
+        setUserData(data)
+    }, [props])
     return (
         <>
             <h2>User List</h2>
@@ -15,7 +26,7 @@ const ListUser = () => {
                         <th>Mobile</th>
                     </thead>
                     <tbody>
-                        {data.users.map((user) => {
+                        {userData.map((user: any) => {
                             return (
                                 <tr key={user.id}>
                                     <td><Link to={user.id}>{user.firstname}</Link></td>

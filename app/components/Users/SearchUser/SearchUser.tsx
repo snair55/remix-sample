@@ -1,10 +1,13 @@
 import styles from "./SearchUser.css";
 const SearchUser = () => {
     return (
-        <div className="search-box">
+        <form method="POST">
+            <div className="search-box">
                 <input type="text" name="search" className="m-r-10" placeholder="Search User" />
-                <button type="submit">Submit</button>
-        </div>
+                <button type="submit" className="m-r-10 btn-blue">Submit</button>
+                <button type="submit" className="m-r-10 btn-reset">Reset</button>
+            </div>
+        </form>
     );
 }
 

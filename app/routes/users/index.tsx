@@ -5,22 +5,24 @@ import SearchUser, {links as searchUserLinks} from "~/components/Users/SearchUse
 import { UserListModel } from "~/models/User";
 import { authenticator } from "~/services/auth.server";
 import { readFile } from "~/utils/fileActions";
+import { useActionData, useLoaderData} from "@remix-run/react";
 
 const UserList = () => {
-  
+  const actionData = useActionData();
+  const loaderData = useLoaderData();
   return (
     <div className="container">
       <SearchUser />
-      <ListUser />
+      <ListUser actionData = {actionData} loaderData = {loaderData}/>
     </div>
   );
 }
 
 export default UserList;
 
-export let loader: LoaderFunction = async ({ request }) => {
+export let loader: LoaderFunction = async ({ request }) => {  
   const user = await authenticator.isAuthenticated(request);
-  if (user) {
+  if (user) { 
     const jsonDirectory = __dirname + "/../app/data";
     const userList = await readFile(jsonDirectory + "/userList.json");
     let data: UserListModel = {users: []};
@@ -30,7 +32,7 @@ export let loader: LoaderFunction = async ({ request }) => {
     return json(data);
   } else {
     return redirect('/login')
-  } 
+  }
 };
 
 export let meta: MetaFunction = () => {

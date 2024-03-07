@@ -10,3 +10,8 @@ export default function Users() {
         
     );
 }
+
+export const action = async ({ request }: { request: any }) => {
+    const form = Object.fromEntries(await request.formData());
+    return form;
+  }

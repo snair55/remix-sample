@@ -6,18 +6,18 @@ const AddUser = () => {
             <form method="POST">
                 <p>
                     <label>First Name :
-                        <input type="text" name="firstname" id="firstname"/></label>
+                        <input type="text" name="firstname" id="firstname" /></label>
                 </p>
                 <p>
                     <label>Last Name :
-                        <input type="text" name="lastname" id="lastname"/></label>
+                        <input type="text" name="lastname" id="lastname" /></label>
                 </p>
                 <p>
                     <label>Mobile :
-                        <input type="text" name="mobile" id="mobile"/></label>
+                        <input type="text" name="mobile" id="mobile" /></label>
                 </p>
                 <p>
-                    <button type="submit">Submit</button>
+                    <button type="submit" className="btn-blue">Submit</button>
                 </p>
             </form>
         </div>

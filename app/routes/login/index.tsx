@@ -4,13 +4,15 @@ import { json } from "@remix-run/node";
 import Login, {links as loginLinks} from "../../components/Login/Login";
 import { AuthorizationError } from "remix-auth";
 
-export default function LoginPage() {
+const LoginPage = () => {
   return (
       <>
       <Login />
       </>  
   );
 }
+
+export default LoginPage;
 
 export async function action({ request }: ActionArgs) {
   try {
